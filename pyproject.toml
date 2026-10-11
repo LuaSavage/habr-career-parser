@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["habrparser", "habrparser.*"]
+
+[tool.setuptools.package-data]
+habrparser = ["py.typed"]
+
+[project]
+name = "habrparser"
+version = "0.1.0"
+description = "Habr Career vacancy parser library"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "beautifulsoup4>=4.14,<5",
+    "requests>=2.34,<3",
+    "fake-headers>=1.0,<2",
+    "inflection>=0.5,<1",
+    "html2text>=2025.4",
+    "aiohttp>=3.13,<4",
+    "proxybroker2 @ git+https://github.com/bluet/proxybroker2.git@v2.0.0b1",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["habrparser", "example.py", "examples"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    "E501",
+]
+
+[tool.ruff.format]
+quote-style = "double"
